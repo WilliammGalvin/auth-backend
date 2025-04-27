@@ -46,6 +46,7 @@ func main() {
 	mux.Handle("/api/auth/validate-refresh", protectedEndpoint(http.HandlerFunc(auth.ValidateRefreshToken)))
 	mux.Handle("/api/auth/refresh-token", protectedEndpoint(http.HandlerFunc(auth.RefreshAuthToken)))
 	mux.Handle("/api/auth/users", protectedEndpoint(http.HandlerFunc(auth.CreateUser)))
+	mux.Handle("/api/auth/verify", protectedEndpoint(http.HandlerFunc(auth.VerifyUser)))
 
 	fmt.Println("Listening on port 8080...")
 	if err := http.ListenAndServe(":8080", mux); err != nil {
